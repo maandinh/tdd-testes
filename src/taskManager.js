@@ -6,4 +6,8 @@ export function filterTasks(tasks, status) {
   if (status === 'all') {
     return tasks
   }
+
+  if (status === 'pending') {
+    return tasks.filter(task => !task.completed)
+  }
 }
