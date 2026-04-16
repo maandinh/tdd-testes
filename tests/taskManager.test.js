@@ -281,3 +281,39 @@ describe('sortTasks', () => {
     ])
   })
 })
+
+it('deve manter ordem se todas forem pendentes', () => {
+  const tasks = [
+    { id: 1, completed: false },
+    { id: 2, completed: false }
+  ]
+
+  expect(sortTasks(tasks)).toEqual(tasks)
+})
+
+it('deve manter ordem se todas forem concluídas', () => {
+  const tasks = [
+    { id: 1, completed: true },
+    { id: 2, completed: true }
+  ]
+
+  expect(sortTasks(tasks)).toEqual(tasks)
+})
+
+it('deve retornar array vazio para lista vazia', () => {
+  expect(sortTasks([])).toEqual([])
+})
+
+it('não deve modificar o array original', () => {
+  const tasks = [
+    { id: 1, completed: true }
+  ]
+
+  const result = sortTasks(tasks)
+
+  expect(tasks).toEqual([
+    { id: 1, completed: true }
+  ])
+
+  expect(result).not.toBe(tasks)
+})
