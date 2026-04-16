@@ -95,3 +95,9 @@ it('deve retornar todas as tarefas quando o filtro for desconhecido', () => {
 
   expect(result).toEqual(tasks)
 })
+
+it('deve retornar array vazio quando não houver tarefas', () => {
+  const result = filterTasks([], 'all')
+
+  expect(result).toEqual([])
+})
