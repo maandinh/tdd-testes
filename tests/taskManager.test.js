@@ -101,3 +101,17 @@ it('deve retornar array vazio quando não houver tarefas', () => {
 
   expect(result).toEqual([])
 })
+
+it('não deve modificar o array original', () => {
+  const tasks = [
+    { id: 1, title: 'A', completed: false }
+  ]
+
+  const result = filterTasks(tasks, 'pending')
+
+  expect(tasks).toEqual([
+    { id: 1, title: 'A', completed: false }
+  ])
+
+  expect(result).not.toBe(tasks)
+})
