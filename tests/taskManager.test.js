@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { removeTask, filterTasks, countTasks, countCompleted, 
-    countPending, createTask, validatePriority, filterByPriority } from '../src/taskManager.js'
+    countPending, createTask, validatePriority, filterByPriority, isDuplicate } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -223,4 +223,30 @@ it('não deve modificar o array original', () => {
   ])
 
   expect(result).not.toBe(tasks)
+})
+
+describe('isDuplicate', () => {
+  it('deve retornar true para título igual', () => {
+    const tasks = [{ title: 'Estudar' }]
+
+    expect(isDuplicate(tasks, 'Estudar')).toBe(true)
+  })
+
+  it('deve ser case-insensitive', () => {
+    const tasks = [{ title: 'Estudar' }]
+
+    expect(isDuplicate(tasks, 'estudar')).toBe(true)
+  })
+
+  it('deve ignorar espaços extras', () => {
+    const tasks = [{ title: 'Estudar' }]
+
+    expect(isDuplicate(tasks, '  Estudar  ')).toBe(true)
+  })
+
+  it('deve retornar false para título diferente', () => {
+    const tasks = [{ title: 'Estudar' }]
+
+    expect(isDuplicate(tasks, 'Trabalhar')).toBe(false)
+  })
 })
