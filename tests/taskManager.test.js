@@ -200,3 +200,13 @@ describe('filterByPriority', () => {
     ])
   })
 })
+
+it('deve retornar array vazio para prioridade inválida', () => {
+  const tasks = [
+    { id: 1, priority: 'low' }
+  ]
+
+  const result = filterByPriority(tasks, 'invalida')
+
+  expect(result).toEqual([])
+})
