@@ -17,3 +17,7 @@ export function filterTasks(tasks, status) {
 
   return tasks
 }
+
+export function countTasks(tasks) {
+  return tasks.length
+}

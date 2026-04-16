@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { removeTask, filterTasks } from '../src/taskManager.js'
+import { removeTask, filterTasks, countTasks } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -114,4 +114,15 @@ it('não deve modificar o array original', () => {
   ])
 
   expect(result).not.toBe(tasks)
+})
+
+describe('countTasks', () => {
+  it('deve retornar o total de tarefas', () => {
+    const tasks = [
+      { id: 1, completed: false },
+      { id: 2, completed: true }
+    ]
+
+    expect(countTasks(tasks)).toBe(2)
+  })
 })
