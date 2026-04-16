@@ -56,3 +56,13 @@ export function isDuplicate(tasks, title) {
   const normalized = title.trim().toLowerCase()
   return tasks.some(t => t.title.toLowerCase() === normalized)
 }
+
+export function addTask(tasks, title) {
+  if (isDuplicate(tasks, title)) {
+    throw new Error('Tarefa duplicada')
+  }
+
+  const newTask = createTask(title)
+
+  return [...tasks, newTask]
+}
