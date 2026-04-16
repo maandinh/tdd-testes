@@ -210,3 +210,17 @@ it('deve retornar array vazio para prioridade inválida', () => {
 
   expect(result).toEqual([])
 })
+
+it('não deve modificar o array original', () => {
+  const tasks = [
+    { id: 1, priority: 'low' }
+  ]
+
+  const result = filterByPriority(tasks, 'low')
+
+  expect(tasks).toEqual([
+    { id: 1, priority: 'low' }
+  ])
+
+  expect(result).not.toBe(tasks)
+})
