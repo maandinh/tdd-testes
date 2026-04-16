@@ -33,11 +33,13 @@ export function countPending(tasks) {
 let _nextId = 1
 
 export function createTask(title, priority = 'medium') {
+  const validPriority = validatePriority(priority) ? priority : 'medium'
+
   return {
     id: _nextId++,
     title: title.trim(),
     completed: false,
-    priority
+    priority: validPriority
   }
 }
 
