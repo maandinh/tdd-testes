@@ -21,3 +21,9 @@ export function filterTasks(tasks, status) {
 export function countTasks(tasks) {
   return tasks.length
 }
+
+export function countCompleted(tasks) {
+  return tasks.filter(t => t.completed).length
+}
+
+
