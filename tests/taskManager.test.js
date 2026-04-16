@@ -158,3 +158,9 @@ describe('createTask com prioridade', () => {
     expect(task.priority).toBe('high')
   })
 })
+
+it('deve usar prioridade "medium" por padrão', () => {
+  const task = createTask('Estudar')
+
+  expect(task.priority).toBe('medium')
+})
