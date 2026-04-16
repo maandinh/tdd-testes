@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { removeTask, filterTasks, countTasks, countCompleted, 
-    countPending, createTask, validatePriority } from '../src/taskManager.js'
+    countPending, createTask, validatePriority, filterByPriority } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -182,4 +182,21 @@ it('deve usar "medium" quando prioridade for inválida', () => {
   const task = createTask('Estudar', 'invalida')
 
   expect(task.priority).toBe('medium')
+})
+
+describe('filterByPriority', () => {
+  it('deve retornar apenas tarefas com prioridade informada', () => {
+    const tasks = [
+      { id: 1, title: 'A', completed: false, priority: 'low' },
+      { id: 2, title: 'B', completed: false, priority: 'high' },
+      { id: 3, title: 'C', completed: false, priority: 'high' }
+    ]
+
+    const result = filterByPriority(tasks, 'high')
+
+    expect(result).toEqual([
+      { id: 2, title: 'B', completed: false, priority: 'high' },
+      { id: 3, title: 'C', completed: false, priority: 'high' }
+    ])
+  })
 })
