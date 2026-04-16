@@ -40,3 +40,8 @@ export function createTask(title, priority = 'medium') {
     priority
   }
 }
+
+export function validatePriority(priority) {
+  const valid = ['low', 'medium', 'high']
+  return valid.includes(priority)
+}
