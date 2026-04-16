@@ -1,12 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { removeTask } from '../src/taskManager.js'
 
-it('deve retornar a lista completa se o ID não existir', () => {
-  const tasks = [
-    { id: 1, title: 'A', completed: false }
-  ]
+it('deve retornar array vazio se a lista estiver vazia', () => {
+  const result = removeTask([], 1)
 
-  const result = removeTask(tasks, 999)
-
-  expect(result).toEqual(tasks)
+  expect(result).toEqual([])
 })
