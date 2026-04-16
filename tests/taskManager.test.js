@@ -120,7 +120,8 @@ describe('countTasks', () => {
   it('deve retornar o total de tarefas', () => {
     const tasks = [
       { id: 1, completed: false },
-      { id: 2, completed: true }
+      { id: 2, completed: true },
+      { id: 3, completed: true }
     ]
 
     expect(countTasks(tasks)).toBe(2)
