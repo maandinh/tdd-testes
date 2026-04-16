@@ -334,3 +334,48 @@ describe('searchTasks', () => {
     ])
   })
 })
+
+it('deve funcionar com letras maiúsculas', () => {
+  const tasks = [
+    { title: 'Estudar' }
+  ]
+
+  expect(searchTasks(tasks, 'EST')).toEqual([
+    { title: 'Estudar' }
+  ])
+})
+
+it('deve retornar vazio quando não encontrar', () => {
+  const tasks = [
+    { title: 'Estudar' }
+  ]
+
+  expect(searchTasks(tasks, 'xyz')).toEqual([])
+})
+
+it('deve retornar vazio para lista vazia', () => {
+  expect(searchTasks([], 'algo')).toEqual([])
+})
+
+it('deve retornar todas as tarefas quando query for vazia', () => {
+  const tasks = [
+    { title: 'Estudar' },
+    { title: 'Trabalhar' }
+  ]
+
+  expect(searchTasks(tasks, '')).toEqual(tasks)
+})
+
+it('não deve modificar o array original', () => {
+  const tasks = [
+    { title: 'Estudar' }
+  ]
+
+  const result = searchTasks(tasks, 'est')
+
+  expect(tasks).toEqual([
+    { title: 'Estudar' }
+  ])
+
+  expect(result).not.toBe(tasks)
+})
