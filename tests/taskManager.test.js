@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { removeTask } from '../src/taskManager.js'
+import { removeTask, filterTasks } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -44,4 +44,17 @@ it('não deve modificar o array original', () => {
   ])
 
   expect(result).not.toBe(tasks)
+})
+
+describe('filterTasks', () => {
+  it('deve retornar todas as tarefas quando o filtro for "all"', () => {
+    const tasks = [
+      { id: 1, title: 'A', completed: false },
+      { id: 2, title: 'B', completed: true }
+    ]
+
+    const result = filterTasks(tasks, 'all')
+
+    expect(result).toEqual(tasks)
+  })
 })
