@@ -66,3 +66,7 @@ export function addTask(tasks, title) {
 
   return [...tasks, newTask]
 }
+
+export function sortTasks(tasks) {
+  return [...tasks].sort((a, b) => Number(a.completed) - Number(b.completed))
+}
