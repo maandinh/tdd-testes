@@ -30,3 +30,13 @@ export function countPending(tasks) {
   return tasks.filter(t => !t.completed).length
 }
 
+let _nextId = 1
+
+export function createTask(title, priority = 'medium') {
+  return {
+    id: _nextId++,
+    title: title.trim(),
+    completed: false,
+    priority
+  }
+}
