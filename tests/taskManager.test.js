@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { removeTask, filterTasks, countTasks, countCompleted,  countPending } from '../src/taskManager.js'
+import { removeTask, filterTasks, countTasks, countCompleted,  countPending, createTask } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -148,5 +148,13 @@ describe('countPending', () => {
     ]
 
     expect(countPending(tasks)).toBe(2)
+  })
+})
+
+describe('createTask com prioridade', () => {
+  it('deve criar tarefa com prioridade informada', () => {
+    const task = createTask('Estudar', 'high')
+
+    expect(task.priority).toBe('high')
   })
 })
