@@ -10,4 +10,8 @@ export function filterTasks(tasks, status) {
   if (status === 'pending') {
     return tasks.filter(task => !task.completed)
   }
+
+    if (status === 'completed') {
+    return tasks.filter(task => task.completed)
+  }
 }

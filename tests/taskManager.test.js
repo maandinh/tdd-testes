@@ -71,3 +71,16 @@ it('deve retornar apenas tarefas pendentes', () => {
     { id: 1, title: 'A', completed: false }
   ])
 })
+
+it('deve retornar apenas tarefas concluídas', () => {
+  const tasks = [
+    { id: 1, title: 'A', completed: false },
+    { id: 2, title: 'B', completed: true }
+  ]
+
+  const result = filterTasks(tasks, 'completed')
+
+  expect(result).toEqual([
+    { id: 2, title: 'B', completed: true }
+  ])
+})
