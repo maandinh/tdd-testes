@@ -26,4 +26,7 @@ export function countCompleted(tasks) {
   return tasks.filter(t => t.completed).length
 }
 
+export function countPending(tasks) {
+  return tasks.filter(t => !t.completed).length
+}
 
