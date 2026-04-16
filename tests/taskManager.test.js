@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { removeTask, filterTasks, countTasks, countCompleted, 
     countPending, createTask, validatePriority, filterByPriority, 
-    isDuplicate, addTask, sortTasks } from '../src/taskManager.js'
+    isDuplicate, addTask, sortTasks, searchTasks } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -316,4 +316,21 @@ it('não deve modificar o array original', () => {
   ])
 
   expect(result).not.toBe(tasks)
+})
+
+describe('searchTasks', () => {
+  it('deve encontrar tarefas que contenham o texto', () => {
+    const tasks = [
+      { title: 'Estudar' },
+      { title: 'Testar' },
+      { title: 'Trabalhar' }
+    ]
+
+    const result = searchTasks(tasks, 'est')
+
+    expect(result).toEqual([
+      { title: 'Estudar' },
+      { title: 'Testar' }
+    ])
+  })
 })
