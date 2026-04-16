@@ -14,4 +14,6 @@ export function filterTasks(tasks, status) {
     if (status === 'completed') {
     return tasks.filter(task => task.completed)
   }
+
+  return tasks
 }

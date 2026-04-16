@@ -84,3 +84,14 @@ it('deve retornar apenas tarefas concluídas', () => {
     { id: 2, title: 'B', completed: true }
   ])
 })
+
+it('deve retornar todas as tarefas quando o filtro for desconhecido', () => {
+  const tasks = [
+    { id: 1, title: 'A', completed: false },
+    { id: 2, title: 'B', completed: true }
+  ]
+
+  const result = filterTasks(tasks, 'qualquerCoisa')
+
+  expect(result).toEqual(tasks)
+})
