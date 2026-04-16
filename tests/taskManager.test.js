@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { removeTask, filterTasks, countTasks, countCompleted, 
-    countPending, createTask, validatePriority, filterByPriority, isDuplicate } from '../src/taskManager.js'
+    countPending, createTask, validatePriority, filterByPriority, 
+    isDuplicate, addTask } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -248,5 +249,15 @@ describe('isDuplicate', () => {
     const tasks = [{ title: 'Estudar' }]
 
     expect(isDuplicate(tasks, 'Trabalhar')).toBe(false)
+  })
+})
+
+describe('addTask - duplicidade', () => {
+  it('deve lançar erro ao adicionar tarefa duplicada', () => {
+    const tasks = [{ id: 1, title: 'Estudar', completed: false }]
+
+    expect(() => {
+      addTask(tasks, 'Estudar')
+    }).toThrow()
   })
 })
