@@ -47,3 +47,7 @@ export function validatePriority(priority) {
   const valid = ['low', 'medium', 'high']
   return valid.includes(priority)
 }
+
+export function filterByPriority(tasks, priority) {
+  return tasks.filter(task => task.priority === priority)
+}
