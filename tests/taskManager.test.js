@@ -58,3 +58,16 @@ describe('filterTasks', () => {
     expect(result).toEqual(tasks)
   })
 })
+
+it('deve retornar apenas tarefas pendentes', () => {
+  const tasks = [
+    { id: 1, title: 'A', completed: false },
+    { id: 2, title: 'B', completed: true }
+  ]
+
+  const result = filterTasks(tasks, 'pending')
+
+  expect(result).toEqual([
+    { id: 1, title: 'A', completed: false }
+  ])
+})
