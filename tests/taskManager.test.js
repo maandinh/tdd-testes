@@ -177,3 +177,9 @@ describe('validatePriority', () => {
     expect(validatePriority('urgente')).toBe(false)
   })
 })
+
+it('deve usar "medium" quando prioridade for inválida', () => {
+  const task = createTask('Estudar', 'invalida')
+
+  expect(task.priority).toBe('medium')
+})
