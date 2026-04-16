@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { removeTask, filterTasks, countTasks, countCompleted } from '../src/taskManager.js'
+import { removeTask, filterTasks, countTasks, countCompleted,  countPending } from '../src/taskManager.js'
 
 describe('removeTask', () => {
   it('deve remover a tarefa correta pelo ID', () => {
@@ -136,5 +136,17 @@ describe('countCompleted', () => {
     ]
 
     expect(countCompleted(tasks)).toBe(2)
+  })
+})
+
+describe('countPending', () => {
+  it('deve contar apenas tarefas pendentes', () => {
+    const tasks = [
+      { id: 1, completed: false },
+      { id: 2, completed: true },
+      { id: 3, completed: false }
+    ]
+
+    expect(countPending(tasks)).toBe(2)
   })
 })
